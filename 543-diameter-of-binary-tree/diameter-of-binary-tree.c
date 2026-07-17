@@ -15,7 +15,7 @@
  * };
  */
 
-int dia = 0;
+int dia;
 int max(int a, int b){
     return (a>b)? a:b;
 }
