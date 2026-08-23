@@ -1,7 +1,7 @@
 class Solution {
 public:
     bool checkStraightLine(vector<vector<int>>& coordinates) {
-        if(coordinates.size() <= 2) return true;
+        if(coordinates.size() <= 2) return true; //2 points always St. Line
         int x1 = coordinates[0][0];
         int y1 = coordinates[0][1];
         int x2 = coordinates[1][0];
