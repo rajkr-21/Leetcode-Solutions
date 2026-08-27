@@ -5,8 +5,8 @@ public:
         int count =0, ans = 0;
         for(int i=0;i<n; i++){
             if(nums[i] == 1) {
-            count++;
-            ans = max(ans, count);
+                count++;
+                ans = max(ans, count);
             } else {
                 count = 0;
             }
