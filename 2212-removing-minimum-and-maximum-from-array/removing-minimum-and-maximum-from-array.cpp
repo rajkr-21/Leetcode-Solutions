@@ -12,7 +12,7 @@ public:
 
         int f = right+1; //Remove both from front side
         int b = n - left; //Remove both from back side
-        int fb = left + 1 + n - right; //Remove one from front and one from back
+        int fb = (left + 1) + (n - right); //Remove one from front and one from back
 
         return min({f,b,fb});
     }
