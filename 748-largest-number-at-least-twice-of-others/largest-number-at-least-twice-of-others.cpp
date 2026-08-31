@@ -3,11 +3,11 @@ public:
     int dominantIndex(vector<int>& nums) {
         int n = nums.size();
         int max = nums[0];
-        int index = 0;
+        int idx = 0;
         for(int i = 0;i < n;i++){
             if(nums[i] > max){
                 max = nums[i];
-                index = i;
+                idx = i;
             }
         }
         for(int i = 0; i < n; i++) {
@@ -15,6 +15,6 @@ public:
                 return -1;
             }
         }
-        return index;
+        return idx;
     }
 };
