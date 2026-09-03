@@ -8,9 +8,9 @@ public:
         //     temp[(i + k) % n] = nums[i];
         // }
         // nums = temp;
-
-        reverse(nums.begin(), nums.end());
-        reverse(nums.begin(), nums.begin() +k);
-        reverse(nums.begin() + k, nums.end());
+        if(k==0) return;
+        reverse(nums.begin(), nums.end()); //entire array
+        reverse(nums.begin(), nums.begin() +k); //first k elements
+        reverse(nums.begin() + k, nums.end()); //n-k elements
     }
 };
