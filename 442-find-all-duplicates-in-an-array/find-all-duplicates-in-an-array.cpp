@@ -1,17 +1,19 @@
 class Solution {
 public:
     vector<int> findDuplicates(vector<int>& nums) {
-        int n = nums.size();
-        set<int> s;
-        vector<int> v;
+        map<int,int> m;
 
-        for(int i=0; i<n; i++){
-            if(s.count(nums[i])){
-                v.push_back(nums[i]);
-            } else {
-                s.insert(nums[i]);
-            }
+        for(auto x : nums){
+            m[x]++;
         }
-        return v;
+
+        vector<int> ans;
+
+        for(auto x : m){
+            if(x.second == 2)
+                ans.push_back(x.first);
+        }
+
+        return ans;
     }
 };
