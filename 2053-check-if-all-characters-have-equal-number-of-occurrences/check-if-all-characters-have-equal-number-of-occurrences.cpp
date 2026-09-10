@@ -6,7 +6,7 @@ public:
 
         for(int i =0; i<n; i++) m[s[i]]++;
 
-        int l = m[s[0]];  //last char ka freq
+        int l = m[s[n-1]];  //last char ka freq
 
         for(auto it : m){
             if(it.second != l){
