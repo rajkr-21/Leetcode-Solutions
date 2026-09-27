@@ -7,5 +7,5 @@ public:
             if(m[c] == 2) return c;
         }
         return -1;
-    }
+    } 
 };
