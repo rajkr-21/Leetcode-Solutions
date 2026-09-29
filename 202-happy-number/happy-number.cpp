@@ -1,25 +1,21 @@
 class Solution {
-private:
-    int getNext(int n) {
-        int totalSum = 0;
-        while (n > 0) {
-            int d = n % 10;
-            n /= 10;
-            totalSum += d * d;
-        }
-        return totalSum;
-    }
-
 public:
     bool isHappy(int n) {
-        int slow = n;
-        int fast = getNext(n);
-        
-        while (fast != 1 && slow != fast) {
-            slow = getNext(slow);
-            fast = getNext(getNext(fast));
+        unordered_set<int> s;
+        while(n != 1){
+            if(s.count(n))
+                return false;
+
+            s.insert(n);
+
+            int happy = 0;
+            while(n > 0){
+                int digit = n % 10;
+                happy += digit * digit;
+                n /= 10;
+            }
+            n = happy;
         }
-        
-        return fast == 1;
+        return true;
     }
 };
