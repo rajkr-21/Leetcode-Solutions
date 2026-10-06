@@ -12,16 +12,16 @@
 class Solution {
 public:
     vector<int> ans;
-    void inOrder(TreeNode* root){
+    void inorder(TreeNode* root){
         if(root == NULL)
             return;
-        inOrder(root -> left);
+        inorder(root -> left);
         ans.push_back(root -> val);
-        inOrder(root -> right);
+        inorder(root -> right);
         
     }
     int minDiffInBST(TreeNode* root) {
-        inOrder(root);
+        inorder(root);
         int mini = INT_MAX;
         for(int i = 0; i < ans.size() - 1;i++){
             mini = min(mini,ans[i+1] - ans[i]);
