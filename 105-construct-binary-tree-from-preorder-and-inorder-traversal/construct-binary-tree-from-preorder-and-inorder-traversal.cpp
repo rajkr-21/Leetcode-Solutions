@@ -15,11 +15,9 @@ public:
     unordered_map<int,int>m;
 
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-        m.clear();
         for (int i = 0; i < inorder.size(); i++) {
             m[inorder[i]] = i;
         }
-
         pid = 0;
         return build(preorder, 0, inorder.size() - 1);
     }
