@@ -1,10 +1,15 @@
 class Solution {
 public:
     int missingNumber(vector<int>& nums) {
-        int n = nums.size();
-        int Tsum = (n*(n+1))/2; //Total Sum
-        return  Tsum - accumulate(nums.begin(),nums.end(),0); //Tsum - OriginalSum
+        sort(nums.begin(), nums.end());
         
+        int n = nums.size();
+        for (int i = 0; i < n; ++i) {
+            if (nums[i] != i) {
+                return i;
+            }
+        }
+        return n;
     }
 }; 
 
