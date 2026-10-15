@@ -12,16 +12,16 @@
 class Solution {
 public:
     bool isSubtree(TreeNode* root, TreeNode* subRoot) {
-        if(subRoot == nullptr) return false;
-        else if (root == nullptr) return false;
-        else if (identical(root, subRoot)) return true;
-        else return isSubtree(root->left, subRoot) || isSubtree(root->right, subRoot);
+        if (!root) return false;
+        return subtree(root, subRoot) || 
+               isSubtree(root->left, subRoot) || 
+               isSubtree(root->right, subRoot);
     }
 
-    bool identical(TreeNode* a, TreeNode* b){
-        if(a == nullptr && b == nullptr) return true;
-        else if (a == nullptr || b == nullptr) return false;
-        else if(a->val != b->val) return false;
-        else return identical(a->left, b->left) && identical(a->right, b->right);
+    bool subtree(TreeNode* a, TreeNode* b){
+        if (!a || !b) return a == b;
+        return (a->val == b->val) && 
+               subtree(a->left, b->left) && 
+               subtree(a->right, b->right);
     }
 };
