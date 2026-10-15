@@ -11,13 +11,20 @@
  */
 class Solution {
 public:
-bool help(TreeNode* root, long long min, long long max){
-    if(root==NULL)return true;
+    bool validate(TreeNode* node, long long min_val, long long max_val) {
+        if (node == nullptr) {
+            return true;
+        }
 
-    if(root->val <=min || root->val >= max)return false;
-    return help(root->left,min,root->val) && help(root->right, root->val, max);
-}
+        if (node->val <= min_val || node->val >= max_val) {
+            return false;
+        }
+
+        // validate the left and right subtrees with updated bounds
+        return validate(node->left, min_val, node->val) && 
+               validate(node->right, node->val, max_val);
+    }
     bool isValidBST(TreeNode* root) {
-        return help(root, LLONG_MIN, LLONG_MAX);
+        return validate(root, LONG_MIN, LONG_MAX);
     }
 };
