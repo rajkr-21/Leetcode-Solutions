@@ -19,6 +19,6 @@ public:
         if (root->right == nullptr) return 1 + minDepth(root->left);
         
         // If both children exist, take the minimum of both paths
-        return 1+ min(minDepth(root->left), minDepth(root->right));
+        return 1 + min(minDepth(root->left), minDepth(root->right));
     }
 };
