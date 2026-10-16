@@ -12,34 +12,13 @@
 class Solution {
 public:
     int minDepth(TreeNode* root) {
-        if (root == nullptr) {
-            return 0;
-        }
-        queue<TreeNode*> q;
-        q.push(root);
-        int depth = 1;
+        if (root == nullptr) return 0;
         
-        while (!q.empty()) {
-            int levelSize = q.size();
-            
-            for (int i = 0; i < levelSize; ++i) {
-                TreeNode* curr = q.front();
-                q.pop();
-                
-                if (curr->left == nullptr && curr->right == nullptr) {
-                    return depth;
-                }
-                
-                if (curr->left != nullptr) {
-                    q.push(curr->left);
-                }
-                if (curr->right != nullptr) {
-                    q.push(curr->right);
-                }
-            }
-            depth++;
-        }
+        // If one child is missing,take the path of other child
+        if (root->left == nullptr) return 1 + minDepth(root->right);
+        if (root->right == nullptr) return 1 + minDepth(root->left);
         
-        return depth;
+        // If both children exist, take the minimum of both paths
+        return 1+ min(minDepth(root->left), minDepth(root->right));
     }
 };
