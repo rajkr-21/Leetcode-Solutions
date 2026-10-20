@@ -10,6 +10,7 @@ public:
             int right = numTrees(n - i);
             total += left * right;
         }
+        
         return total;
     }
 };
