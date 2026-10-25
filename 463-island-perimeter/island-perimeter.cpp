@@ -8,11 +8,18 @@ public:
         for(int i=0; i<r; i++){
             for(int j=0; j < c; j++){
                 if(grid[i][j] == 1){
-                    if (i == 0 || grid[i - 1][j] == 0) ans++; // up cell or above water
-                    if (i == r - 1 || grid[i + 1][j] == 0) ans++; // down cell or below water
-                    if (j == 0 || grid[i][j - 1] == 0) ans++; // left cell or left me water
-                    if (j == c - 1 || grid[i][j + 1] == 0) ans++; // right cell or right me water
+                    ans+= 4; // 4 sides of land wala cell
+                    
+                    // if land is direct above
+                    if (i > 0 && grid[i - 1][j] == 1) {
+                        ans -= 2;
+                    }
+                    //if land is direct left
+                    if (j > 0 && grid[i][j - 1] == 1) {
+                        ans -= 2;
+                    }
                 }
+
             }
         }
         return ans;
