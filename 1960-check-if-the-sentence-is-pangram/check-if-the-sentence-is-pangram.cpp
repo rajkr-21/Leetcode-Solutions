@@ -1,12 +1,9 @@
 class Solution {
 public:
     bool checkIfPangram(string sentence) {
-        vector<int> a(26,0);
+        //store only unique char of the sentenc
+        unordered_set<char> ans(sentence.begin(), sentence.end());
         
-        for(char c : sentence) a[c-'a']++;
-        
-        for(int i=0;i<26; i++) if(a[i]== 0) return false;
-        
-        return true;
+        return ans.size() == 26;
     }
 };
