@@ -9,7 +9,7 @@
  * };
  */
 class Solution {
-private:
+public:
     ListNode* reverseList(ListNode* head) {
         ListNode* prev = nullptr;
         ListNode* curr = head;
@@ -22,7 +22,6 @@ private:
         return prev;
     }
 
-public:
     ListNode* removeNodes(ListNode* head) {
         if (!head || !head->next) return head;
 
