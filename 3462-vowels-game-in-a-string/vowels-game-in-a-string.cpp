@@ -1,13 +1,11 @@
 class Solution {
 public:
     bool doesAliceWin(string s) {
-        int count = 0;
-        for(int i=0; i < s.size(); i++){
-            if(s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u'){
-                count++;
+        for (char c : s) {
+            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+                return true;
             }
         }
-        if(count != 0) return true;
         return false;
     }
 };
