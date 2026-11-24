@@ -1,26 +1,25 @@
+
 class Solution {
 public:
     int maxLength(vector<int>& nums) {
-        int n = nums.size();
-        int maxLen = 0;
+        int n = nums.size(), ans = 0;
 
-        for (int i = 0; i < n; ++i) {
-            int prod = 1;
-            int g = 0;
-            int l = 1;
+        for (int l = 0; l < n; l++) {
+            int g = nums[l], lc = nums[l];
+            double inv = 1.0 / nums[l];
 
-            for (int j = i; j < n; ++j) {
-                prod *= nums[j];
-                if (prod > 25200) break; // Exceeds max possible lcm * gcd
-
-                g = gcd(g, nums[j]);
-                l = lcm(l, nums[j]);
-
-                if (prod == l * g) {
-                    maxLen = max(maxLen, j - i + 1);
+            for (int r = l; r < n; r++) {
+                if (r > l) {
+                    g = gcd(g, nums[r]);
+                    lc = lcm(lc, nums[r]);
+                    inv /= nums[r];
                 }
+
+                if (g * 1LL * lc * inv > 0.99999999)
+                    ans = max(ans, r - l + 1);
             }
         }
-        return maxLen;
+
+        return ans;
     }
 };
