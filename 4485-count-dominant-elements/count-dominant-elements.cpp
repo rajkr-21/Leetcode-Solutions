@@ -2,17 +2,22 @@ class Solution {
 public:
     int countDominantElements(vector<int>& nums) {
         int n =nums.size();
-        int count=0;
-        if(n == 1) return 1;
-        for(int i=0;i<n;i++){
-            if(i == 0){
-                if(nums[0] >= nums[1]) count++;
+        if (n == 1) {
+            return 1;
+        }
+        int count = 0;
+        for (int i = 0;i < n; i++) {
+            int sum = 0, neighbors = 0;
+            if (i>0) {
+                sum += nums[i - 1];
+                neighbors++;
             }
-            else if(i == n-1){
-                if(nums[n-1] >= nums[n-2]) count++;
+            if (i < n-1) {
+                sum += nums[i + 1];
+                neighbors++;
             }
-            else{
-                if(2*nums[i] >= nums[i-1] + nums[i+1]) count++;
+            if (nums[i] * neighbors >= sum) {
+                count++;
             }
         }
         return count;
